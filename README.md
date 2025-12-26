@@ -1,44 +1,75 @@
-# 🚀 Momentum Leap Simulator
+# 🛹 Skate Pro Simulator
 
-> **Roblox Incremental / Progression Simulator**
+> **Roblox Incremental / Progression Skateboarding Game**
 
-Momentum Leap Simulator es un juego de progreso incremental en Roblox donde el jugador gana *Momentum* al moverse, aumentando su velocidad y potencia de salto para recorrer mapas cada vez más largos, obtener mascotas multiplicadoras y realizar *Rebirths* que aceleran el progreso.
+Skate Pro Simulator es un juego de progresión incremental en Roblox centrado en **skateboarding**, donde el jugador incrementa su **Momentum** mientras recorre un circuito de skate cada vez más exigente.
 
----
-
-## 📌 Estado del proyecto
-
-🟡 **En diseño / preproducción**
-Actualmente se está definiendo el concepto, mecánicas base y estructura técnica antes de iniciar el desarrollo en Roblox Studio.
+El *Momentum* representa la **inercia, fluidez y control** del jugador sobre la tabla, y se transforma dinámicamente en **velocidad efectiva**, determinando la distancia de los saltos, el control en rampas y la capacidad de completar el circuito.
 
 ---
 
 ## 🎮 Concepto general
 
-El jugador comienza con estadísticas básicas. Cada paso genera *Momentum*, lo que permite correr más rápido y saltar más lejos. A través de circuitos y rampas, el jugador obtiene **Victorias**, que sirven para desbloquear zonas, comprar mascotas y realizar **Rebirths**.
+El jugador comienza con un skate básico y un **Momentum muy bajo**, lo que resulta en poca velocidad y saltos prácticamente imposibles.
 
-El objetivo es simple: **llegar cada vez más lejos, más rápido y de forma más eficiente**.
+Al patinar de forma continua, cada metro recorrido incrementa el Momentum, representando la energía acumulada al mantener el movimiento.
+
+### El Momentum:
+
+* Aumenta al patinar de forma fluida
+* Disminuye al caer, frenar bruscamente o perder el equilibrio
+
+La **velocidad efectiva** del jugador se calcula en tiempo real a partir del Momentum actual.
+
+A mayor Momentum:
+
+* Mayor velocidad
+* Saltos más largos
+* Mejor control en rampas
+
+A medida que el jugador mantiene Momentum suficiente, puede superar más secciones del circuito y alcanzar **checkpoints**, los cuales otorgan **Victorias**.
+
+Completar el circuito completo concede un lote mayor de Victorias, recompensando la ejecución limpia y continua.
 
 ---
 
-## 🔁 Core Gameplay Loop
+## 🪙 Victorias (Moneda principal)
+
+Las Victorias funcionan como la moneda principal del juego y permiten comprar mascotas, nuevas tablas de skate y desbloquear progresión meta.
+
+### Obtención de Victorias
+
+* Alcanzar checkpoints
+* Completar el circuito completo
+
+### Ejemplo de progresión
+
+* 1er checkpoint → **+1 Victoria**
+* 2 checkpoints → **+2 Victorias**
+* Circuito completo → **+4 Victorias**
+
+---
+
+## 🔁 Gameplay Loop
 
 ```
-Moverse / Saltar
+Patinar
    ↓
-Ganar Momentum
+Acumular Momentum
    ↓
-Aumentar Velocidad / Distancia
+Convertir Momentum en Velocidad
    ↓
-Completar circuitos
+Saltos más largos y controlados
+   ↓
+Alcanzar checkpoints
    ↓
 Ganar Victorias
    ↓
-Comprar Mascotas / Upgrades
+Comprar Mascotas / Skates
    ↓
-Rebirth
+Mantener Momentum más fácilmente
    ↓
-Progreso más rápido
+Completar el circuito con mayor eficiencia
    ↺
 ```
 
@@ -46,28 +77,33 @@ Progreso más rápido
 
 ## 🧠 Mecánicas principales
 
-### 🏃 Movimiento
+### 🛹 Skateboarding, Momentum y Movimiento
 
-* Cada paso = +Momentum
-* El Momentum afecta:
+* **Momentum** es la estadística central del juego
+* Cada metro recorrido patinando = **+Momentum**
 
-  * Velocidad de movimiento
-  * Fuerza de salto
+El Momentum:
 
-### 🛣️ Mapas / Circuitos
+* Aumenta con movimiento continuo
+* Disminuye al caer o frenar
 
-* Mapas lineales con rampas y checkpoints
-* La distancia alcanzada determina las **Victorias**
+El jugador **no controla directamente la velocidad**, sino que gestiona su Momentum.
 
-### 🏆 Victorias
+La **velocidad efectiva** se deriva del Momentum y afecta:
 
-* Moneda principal de progresión
-* Se obtienen al completar circuitos o llegar a checkpoints
-* Se usan para:
+* Velocidad de desplazamiento
+* Distancia de salto
+* Control en rampas y aterrizajes
 
-  * Comprar mascotas
-  * Desbloquear zonas
-  * Realizar Rebirths
+El gameplay premia mantener el flujo y penaliza los errores, simulando la sensación real de montar skate.
+
+---
+
+## 🛣️ Mapas / Circuitos
+
+* Circuitos lineales con rampas, gaps y checkpoints
+* El progreso dentro del circuito depende del Momentum sostenido
+* Caer reduce Momentum, pero **no reinicia el progreso ganado**
 
 ---
 
@@ -75,126 +111,76 @@ Progreso más rápido
 
 ### Equipamiento
 
-* Máximo 3 mascotas equipadas
-* Cada mascota otorga multiplicadores de Momentum
+* Máximo **3 mascotas equipadas**
+* Cada mascota otorga:
+
+  * Multiplicadores de ganancia de Momentum
+
+### Compra
+
+* Se compran con Victorias
+* Mascota inicial:
+
+  * Costo: **3 Victorias**
 
 ### Rarezas
 
 | Rareza    | Multiplicador |
 | --------- | ------------- |
-| Common    | x1.1          |
-| Rare      | x1.3          |
-| Epic      | x1.6          |
-| Legendary | x2.0+         |
+| Common    | x1.2          |
+| Rare      | x1.5          |
+| Epic      | x2.0          |
+| Legendary | x3.0          |
 
-> **Futuro:** Fusión, evolución y mascotas exclusivas por Rebirth
-
----
-
-## 🔁 Sistema de Rebirth
-
-* Resetea:
-
-  * Momentum
-* Mantiene:
-
-  * Mascotas
-  * Zonas desbloqueadas
-* Beneficio:
-
-  * Multiplicador permanente de Momentum
-
-Ejemplo:
-
-* Rebirth 1 → x1.5
-* Rebirth 2 → x2.0
+> **Futuro:** fusión, evolución y mascotas exclusivas por Rebirth
 
 ---
 
-## 📈 Progresión
+## 🛹 Tablas de Skate
 
-* Inicio: progreso rápido y constante
-* Medio: decisiones estratégicas (mascotas, rutas)
-* Tardío: optimización de multiplicadores
+Las tablas influyen directamente en la progresión del jugador mediante multiplicadores.
+
+### Ejemplo
+
+* **Skate inicial**
+
+  * Ganancia de Victorias: x1.0
+
+* **Segundo skate**
+
+  * Costo: **10 Victorias**
+  * Ganancia de Victorias: **x1.5**
+
+> En el futuro podrán existir tablas exclusivas o cosméticas.
 
 ---
 
-## 🧩 Escalabilidad futura
+## 📈 Progresión del jugador
 
-* Nuevos mapas y biomas
-* Eventos temporales
-* Leaderboards
-* Modo AFK
-* Logros
+### Inicio
 
----
+* Momentum bajo
+* Velocidad reducida
+* Saltos cortos
 
-## 💰 Monetización (opcional)
+### Medio
 
-* Gamepasses:
+* Mejor gestión del Momentum
+* Desbloqueo gradual del circuito
+* Decisiones estratégicas (mascotas y tablas)
 
-  * +1 mascota equipada
-  * Auto Momentum
-* Boosts temporales
-* Mascotas cosméticas
+### Tardío
 
-> ⚠️ El juego no será *pay-to-win*
+* Momentum alto y estable
+* Optimización de multiplicadores
+* Ejecuciones limpias del circuito completo
 
 ---
 
 ## 🧪 MVP (Primera versión jugable)
 
 ✔ 1 mapa
-✔ 1 stat principal (Momentum)
+✔ 2 stats principales (Momentum y velocidad efectiva)
 ✔ Mascotas básicas
-✔ 1 Rebirth
-✔ 1 circuito
+✔ 1 circuito completo
 
----
-
-## 👥 Colaboración
-
-Roles sugeridos:
-
-* 🧠 Game Designer
-* 🧑‍💻 Scripter
-* 🎨 Builder
-* 🎵 Sonido / UI (opcional)
-
----
-
-## 📂 Estructura del repositorio (propuesta)
-
-```
-Momentum-Leap-Simulator/
-│
-├── docs/
-│   ├── game-design.md
-│   ├── progression-formulas.md
-│   └── roadmap.md
-│
-├── roblox/
-│   ├── scripts/
-│   ├── modules/
-│   └── ui/
-│
-├── assets/
-│
-└── README.md
-```
-
----
-
-## 📜 Licencia
-
-Pendiente de definir.
-
----
-
-## ✨ Autor
-
-Proyecto creado y documentado como ejercicio de diseño y programación en Roblox.
-
----
-
-> **Nota:** Este documento está vivo y evolucionará junto con el proyecto.
