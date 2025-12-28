@@ -66,7 +66,7 @@ Desbloquear mundos más difíciles
 
 ---
 
-## 🧠 Mecánicas principales
+##  Mecánicas principales
 
 ### 🛹 Movimiento y Velocidad
 
@@ -204,3 +204,14 @@ Aunque el jugador conserva su velocidad:
 
 ---
 
+## 🚧 Estado actual del proyecto (MVP) - 28/12/2025
+
+Esta es la primera versión entregable del juego, donde se ha implementado:
+
+- Visualización de la **Velocidad** en pantalla mediante un label en el HUD.  
+- Sistema básico de estadísticas para la velocidad, que se incrementa según el movimiento del jugador.  
+- Integración inicial del stat de velocidad con el servidor para sincronización.  
+
+
+![Roblox pantallazo velocidad](https://github.com/user-attachments/assets/0c02c8b1-3772-4637-8cd5-87b7a1ce915c)
+> Esta primera version aún no incluye objetos, circuitos completos ni mecánicas avanzadas, pero sienta las bases para ello.
